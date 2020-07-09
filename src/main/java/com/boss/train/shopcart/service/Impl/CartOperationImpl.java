@@ -10,7 +10,8 @@ import java.util.List;
 @Service
 public class CartOperationImpl implements CartOperation {
 
-
+    @Autowired
+    private CartMapper cartMapper;
 
     @Override
     public int addGood(Goods goods) {
@@ -20,5 +21,10 @@ public class CartOperationImpl implements CartOperation {
     @Override
     public List<Goods> getGoodsList() {
         return null;
+    }
+
+    @Override
+    public Goods selectGoodById(int goodId) {
+        return cartMapper.selectGoodById(goodId);
     }
 }

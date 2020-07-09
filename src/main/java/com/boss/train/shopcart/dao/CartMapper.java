@@ -8,4 +8,5 @@ import org.apache.ibatis.annotations.Mapper;
 public interface CartMapper {
     int addGood(Goods goods);
 
+    Goods selectGoodById(int goodId);
 }

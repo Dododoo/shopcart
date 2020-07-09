@@ -9,5 +9,5 @@ public interface CartOperation {
 
     List<Goods> getGoodsList();
 
-
+    Goods selectGoodById(int id);
 }

@@ -11,6 +11,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @Controller
 @RequestMapping("/cart")
 public class CartController{
@@ -23,14 +26,15 @@ public class CartController{
     private CartUtil cartUtil;
 
 
-    @RequestMapping(path = "/add", method = RequestMethod.POST)
-    public String addGoods(){
-        Goods goods = new Goods();
-        goods.setGoodName("goodId");
-        goods.setGoodName("goodName");
+    @RequestMapping(path = "/get", method = RequestMethod.GET)
+    @ResponseBody
+    public String getGoodById(){
+        Goods good = new Goods();
+        Map<String, Goods> map = new HashMap<>();
+        good = cartOperationImpl.selectGoodById(1);
+        map.put("good",good);
 
-        cartOperationImpl.addGood(goods);
-        return "success";
+        return cartUtil.getJsonString(map);
     }
 
 
