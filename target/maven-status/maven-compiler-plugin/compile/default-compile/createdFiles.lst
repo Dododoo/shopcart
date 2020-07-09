@@ -1,0 +1,6 @@
+com\boss\train\shopcart\entity\Goods.class
+com\boss\train\shopcart\ShopcartApplication.class
+com\boss\train\shopcart\util\CartUtil.class
+com\boss\train\shopcart\service\Impl\CartOperationImpl.class
+com\boss\train\shopcart\service\CartOperation.class
+com\boss\train\shopcart\controller\CartController.class
