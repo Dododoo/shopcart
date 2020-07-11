@@ -9,4 +9,28 @@
         where goodId = #{goodId}
     </select>
 
+    <select id="getAllGoods" resultType="com.boss.train.shopcart.entity.Goods">
+        select * from goods
+    </select>
+
+    <select id="selectOrderByUid"  resultMap="getAllOrders">
+        select * from cart.order join orderitem on userId = #{userId} and cart.order.orderId =orderitem.orderId
+    </select>
+
+    <resultMap id="getAllOrders" type="com.boss.train.shopcart.entity.Order" autoMapping="true">
+        <collection property="list" javaType="List" ofType="com.boss.train.shopcart.entity.OrderItem" autoMapping="true">
+        </collection>
+    </resultMap>
+
+    <select id="getOrderItemByOId" parameterType="Integer" resultType="com.boss.train.shopcart.entity.OrderItem">
+        select * from orderItem where orderId = #{orderId}
+    </select>
+
+    <insert id="addOrder" useGeneratedKeys="true" keyProperty="orderId" >
+        insert into cart.order (userId)
+        values (#{userId})
+    </insert>
+
+
+
 </mapper>

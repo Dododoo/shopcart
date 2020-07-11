@@ -9,7 +9,7 @@ import java.util.Map;
 @Component
 public class CartUtil {
 
-    public String getJsonString(Map<String, Goods> map){
+    public String getJsonString(Map<String, Object> map){
         JSONObject json = new JSONObject();
         if(map != null){
             for(String key : map.keySet()){
