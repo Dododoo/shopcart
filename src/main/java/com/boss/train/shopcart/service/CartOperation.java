@@ -9,14 +9,10 @@ import java.util.List;
 public interface CartOperation {
     int addGoods(int userId, int goodId, int goodNumber);
 
-    int updateGoodsNumber(int userId, int goodId);
-
     List<Goods> getAllGoods();
 
     Goods selectGoodById(int id);
 
     List<Order> selectOrderByUid(int userId);
-
-    OrderItem getOrderItemByOId(int orderId);
 
 }

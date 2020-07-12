@@ -39,7 +39,7 @@ public class CartController{
         Map<String, Object> map = new HashMap<>();
         good = cartOperationImpl.selectGoodById(1);
         map.put("good",good);
-        return cartUtil.getJsonString(map);
+        return cartUtil.getJsonString(0, "查询单个商品成功", map);
     }
 
 
@@ -55,7 +55,7 @@ public class CartController{
             map.put(String.valueOf(goods.getGoodId()),goods);
         }
 
-        return cartUtil.getJsonString(map);
+        return cartUtil.getJsonString(1, "查询所有商品成功", map);
     }
 
 
@@ -68,7 +68,7 @@ public class CartController{
         System.out.println(order);
         Map<String, Object> orderMap = new HashMap<>();
         orderMap.put("user:2",order);
-        return cartUtil.getJsonString(orderMap);
+        return cartUtil.getJsonString(3, "查询订单成功", orderMap);
     }
 
 
@@ -77,12 +77,17 @@ public class CartController{
      * */
     @RequestMapping(path = "/add", method = RequestMethod.POST)
     public String addOrder(@RequestParam("goodId")int goodId, @RequestParam("number")int number){
+        String msg = "";
+        int temp = cartOperationImpl.addGoods(2, goodId, number);
+        System.out.println(temp);
+        if(temp == -1){
+            msg = "添加到订单失败";
+        }else {
+            msg = "添加到订单成功";
+        }
 
-        cartOperationImpl.addGoods(2, goodId, number);
-        return "success";
+        return cartUtil.getJsonString(4, msg);
     }
-
-
 
     /***
      * 测试环境是否成功搭建

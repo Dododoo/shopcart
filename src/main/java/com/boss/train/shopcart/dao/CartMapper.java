@@ -22,5 +22,5 @@ public interface CartMapper {
 
     List<Order> selectOrderByUid(int userId);
 
-    OrderItem getOrderItemByOId(int orderId);
+    int updateGoodNumberById(int goodId, int goodNumber);
 }

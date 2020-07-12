@@ -37,4 +37,8 @@
     </insert>
 
 
+    <update id="updateGoodNumberById" parameterType="Integer">
+        update goods set goodNumber = #{goodNumber} where goodId = #{goodId}
+    </update>
+
 </mapper>

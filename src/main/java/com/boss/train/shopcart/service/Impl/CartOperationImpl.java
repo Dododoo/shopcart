@@ -27,9 +27,16 @@ public class CartOperationImpl implements CartOperation {
         if(goodId == 0 ){
             return 0;
         }
+
+        //用户添加的数量大于库存时，添加失败
+        Goods good = cartMapper.selectGoodById(goodId);
+        if(good.getGoodNumber() < goodNumber){
+            return -1;
+        }
+
+        //添加到订单
         Order order = new Order();
         order.setUserId(userId);
-        //添加到订单
         cartMapper.addOrder(order);
         int orderId = order.getOrderId();
 
@@ -40,13 +47,14 @@ public class CartOperationImpl implements CartOperation {
         orderItem.setNumber(goodNumber);
         cartMapper.addOrderItem(orderItem);
 
-        return order.getOrderId();
+        //添加商品到订单后修改库存数量
+        int number = good.getGoodNumber() - goodNumber;
+        System.out.println(number);
+        int code = cartMapper.updateGoodNumberById(goodId, number);
+
+        return code;
     }
 
-    @Override
-    public int updateGoodsNumber(int userId, int goodId) {
-        return 0;
-    }
 
     @Override
     public List<Goods> getAllGoods() {
@@ -63,8 +71,4 @@ public class CartOperationImpl implements CartOperation {
         return cartMapper.selectOrderByUid(userId);
     }
 
-    @Override
-    public OrderItem getOrderItemByOId(int orderId) {
-        return cartMapper.getOrderItemByOId(orderId);
-    }
 }
