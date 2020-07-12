@@ -7,7 +7,9 @@ import com.boss.train.shopcart.service.Impl.CartOperationImpl;
 import com.boss.train.shopcart.util.CartUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
@@ -45,13 +47,14 @@ public class CartController{
      * 查询所有商品
      * */
     @RequestMapping(path = "/getAll", method = RequestMethod.GET)
-    public String getAllGoods(){
+    public String getAllGoods(Model modelAndView){
         List<Goods> goodsList = new ArrayList<>();
         goodsList = cartOperationImpl.getAllGoods();
         Map<String, Object> map = new HashMap<>();
         for(Goods goods: goodsList){
             map.put(String.valueOf(goods.getGoodId()),goods);
         }
+
         return cartUtil.getJsonString(map);
     }
 
@@ -68,11 +71,14 @@ public class CartController{
         return cartUtil.getJsonString(orderMap);
     }
 
-    @RequestMapping(path = "/add", method = RequestMethod.GET)
-    public String addOrder(@PathVariable("goodId") int goodId, @PathVariable("number") int number){
 
+    /**
+     * 用户添加商品到订单
+     * */
+    @RequestMapping(path = "/add", method = RequestMethod.POST)
+    public String addOrder(@RequestParam("goodId")int goodId, @RequestParam("number")int number){
 
-        System.out.println( cartOperationImpl.addGoods(2, goodId, number));
+        cartOperationImpl.addGoods(2, goodId, number);
         return "success";
     }
 

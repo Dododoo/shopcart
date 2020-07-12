@@ -7,7 +7,7 @@ import com.boss.train.shopcart.entity.OrderItem;
 import java.util.List;
 
 public interface CartOperation {
-    int addGoods(int userId, int goodId, int number);
+    int addGoods(int userId, int goodId, int goodNumber);
 
     int updateGoodsNumber(int userId, int goodId);
 

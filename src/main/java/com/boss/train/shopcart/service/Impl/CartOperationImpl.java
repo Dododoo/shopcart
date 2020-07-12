@@ -17,9 +17,13 @@ public class CartOperationImpl implements CartOperation {
     @Autowired
     private CartMapper cartMapper;
 
+
+    /**
+     *
+     * */
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
-    public int addGoods(int userId, int goodId, int number) {
+    public int addGoods(int userId, int goodId, int goodNumber) {
         if(goodId == 0 ){
             return 0;
         }
@@ -33,7 +37,7 @@ public class CartOperationImpl implements CartOperation {
         OrderItem orderItem = new OrderItem();
         orderItem.setGoodId(goodId);
         orderItem.setOrderId(orderId);
-        orderItem.setNumber(number);
+        orderItem.setNumber(goodNumber);
         cartMapper.addOrderItem(orderItem);
 
         return order.getOrderId();

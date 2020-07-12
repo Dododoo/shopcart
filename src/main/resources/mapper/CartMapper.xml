@@ -31,6 +31,10 @@
         values (#{userId})
     </insert>
 
+    <insert id="addOrderItem" parameterType="com.boss.train.shopcart.entity.OrderItem" >
+        insert into cart.orderItem (orderId, goodId, number)
+        values (#{orderId}, #{goodId}, #{number})
+    </insert>
 
 
 </mapper>
