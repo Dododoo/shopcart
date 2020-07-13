@@ -2,29 +2,27 @@ package com.boss.train.shopcart.controller;
 
 import com.boss.train.shopcart.entity.Goods;
 import com.boss.train.shopcart.entity.Order;
-import com.boss.train.shopcart.service.CartOperation;
 import com.boss.train.shopcart.service.Impl.CartOperationImpl;
 import com.boss.train.shopcart.util.CartUtil;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
 
-import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+import java.util.concurrent.locks.ReentrantLock;
 
 @Controller
 @RequestMapping("/cart")
 @ResponseBody
-public class CartController{
+public class CartController {
 
+    private ReentrantLock lock = new ReentrantLock();
 
     @Autowired
-    private CartOperationImpl cartOperationImpl;
+    private CartOperationImpl cartOperation;
 
     @Autowired
     private CartUtil cartUtil;
@@ -33,26 +31,26 @@ public class CartController{
     /**
      * 根据商品的id查询商品
      * */
-    @RequestMapping(path = "/get", method = RequestMethod.GET)
-    public String getGoodById(){
+    @RequestMapping(path = "/getSingleGoods", method = RequestMethod.GET)
+    public String getGoodById(@RequestParam("goodId")int goodId){
         Goods good = new Goods();
         Map<String, Object> map = new HashMap<>();
-        good = cartOperationImpl.selectGoodById(1);
+        good = cartOperation.selectGoodById(goodId);
+        System.out.println(goodId);
         map.put("good",good);
         return cartUtil.getJsonString(0, "查询单个商品成功", map);
     }
 
-
     /**
      * 查询所有商品
      * */
-    @RequestMapping(path = "/getAll", method = RequestMethod.GET)
-    public String getAllGoods(Model modelAndView){
+    @RequestMapping(path = "/getAllGoods", method = RequestMethod.GET)
+    public String getAllGoods(){
         List<Goods> goodsList = new ArrayList<>();
-        goodsList = cartOperationImpl.getAllGoods();
+        goodsList = cartOperation.getAllGoods();
         Map<String, Object> map = new HashMap<>();
         for(Goods goods: goodsList){
-            map.put(String.valueOf(goods.getGoodId()),goods);
+            map.put(String.valueOf(goods.getGoodName()),goods);
         }
 
         return cartUtil.getJsonString(1, "查询所有商品成功", map);
@@ -64,28 +62,38 @@ public class CartController{
      * */
     @RequestMapping(path = "/findOrder", method = RequestMethod.GET)
     public String findOrderByUid(){
-        List<Order> order = cartOperationImpl.selectOrderByUid(1);
-        System.out.println(order);
+        List<Order> order = cartOperation.selectOrderByUid(1);
+
         Map<String, Object> orderMap = new HashMap<>();
-        orderMap.put("user:2",order);
+        for(Order order1 : order){
+            orderMap.put("order:" + order1.getOrderId(),order1);
+        }
         return cartUtil.getJsonString(3, "查询订单成功", orderMap);
     }
 
 
     /**
-     * 用户添加商品到订单
+     * 用户直接下单
      * */
-    @RequestMapping(path = "/add", method = RequestMethod.POST)
+    @RequestMapping(path = "/addOrder", method = RequestMethod.POST)
     public String addOrder(@RequestParam("goodId")int goodId, @RequestParam("number")int number){
         String msg = "";
-        int temp = cartOperationImpl.addGoods(2, goodId, number);
+
+        //在添加商品到订单时加锁
+        lock.lock();
+        int temp = 0;
+        try{
+            temp = cartOperation.addGoods(2, goodId, number);
+        }finally {
+            //添加完毕释放锁
+            lock.unlock();
+        }
         System.out.println(temp);
         if(temp == -1){
-            msg = "添加到订单失败";
+            msg = "下单失败";
         }else {
-            msg = "添加到订单成功";
+            msg = "下单成功";
         }
-
         return cartUtil.getJsonString(4, msg);
     }
 
@@ -93,8 +101,8 @@ public class CartController{
      * 测试环境是否成功搭建
      */
     @RequestMapping("/hello")
-    public String sayHello(){
-        return "hello world";
+    public String sayHello() {
+        return "hello";
     }
 
 }

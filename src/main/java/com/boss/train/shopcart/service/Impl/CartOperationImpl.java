@@ -19,15 +19,14 @@ public class CartOperationImpl implements CartOperation {
 
 
     /**
-     *
+     *用户直接下单业务逻辑实现
      * */
     @Override
     @Transactional(isolation = Isolation.READ_COMMITTED)
     public int addGoods(int userId, int goodId, int goodNumber) {
         if(goodId == 0 ){
-            return 0;
+            return -1;
         }
-
         //用户添加的数量大于库存时，添加失败
         Goods good = cartMapper.selectGoodById(goodId);
         if(good.getGoodNumber() < goodNumber){
@@ -46,6 +45,8 @@ public class CartOperationImpl implements CartOperation {
         orderItem.setOrderId(orderId);
         orderItem.setNumber(goodNumber);
         cartMapper.addOrderItem(orderItem);
+
+        //int i = 1 / 0;
 
         //添加商品到订单后修改库存数量
         int number = good.getGoodNumber() - goodNumber;

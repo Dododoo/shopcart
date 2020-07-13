@@ -10,7 +10,6 @@ import java.util.List;
 
 @Mapper
 public interface CartMapper {
-    int addGood(Goods goods);
 
     int addOrder(Order order);
 

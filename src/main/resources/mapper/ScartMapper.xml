@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.boss.train.shopcart.dao.ScartMapper">
+    <insert id="addScart" parameterType="com.boss.train.shopcart.entity.Scart">
+        insert into scart values(#{scartId}, #{userId}, #{goodId}, #{goodNumber}, #{status})
+    </insert>
+
+    <select id="getScartByUid" resultType="com.boss.train.shopcart.entity.Scart">
+        select * from scart where userId = #{userId} and status = #{status}
+    </select>
+
+    <update id="updateGoodNumber" >
+        update scart set goodNumber = #{goodNumber} where scartId = #{scartId} and goodId = #{goodId}
+    </update>
+
+    <delete id="removeGoodById">
+        delete from scart where scartId = #{scartId} and goodId = #{goodId}
+    </delete>
+</mapper>
