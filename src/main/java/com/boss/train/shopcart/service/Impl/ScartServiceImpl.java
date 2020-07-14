@@ -37,7 +37,7 @@ public class ScartServiceImpl implements ScartService {
         System.out.println(scartList.size());
 
         if(scartList.size() == 0){//不存在的情况
-            //购物车存在则随机生成购物车id
+            //购物车不存在则随机生成购物车id
             scartId = cartUtil.generateUUID();
         }else{//购物车存在
             //购物车存在直接获取购物id
@@ -45,8 +45,8 @@ public class ScartServiceImpl implements ScartService {
             //遍历该用户的购物车查看是否已经存在该商品
             for(Scart scart1 :scartList){
                 if(scart1.getGoodId() == goodId){
-                   int  number = scart1.getGoodNumber() + goodNumber;
-                    return scartMapper.updateGoodNumber(scartId, goodId, number);
+                    goodNumber += scart1.getGoodNumber();
+                    return scartMapper.updateGoodNumber(scartId, goodId, goodNumber);
                 }
             }
         }
@@ -62,7 +62,6 @@ public class ScartServiceImpl implements ScartService {
     @Override
     public List<Scart> getScartByUid(int userId) {
         List<Scart> list = scartMapper.getScartByUid(userId, CartConstant.UNEXPIRE_STATUS);
-        session.setAttribute("userId:" + userId, list);
         return list;
     }
 

@@ -4,6 +4,8 @@ import com.boss.train.shopcart.entity.Goods;
 import com.boss.train.shopcart.entity.Order;
 import com.boss.train.shopcart.service.Impl.CartOperationImpl;
 import com.boss.train.shopcart.util.CartUtil;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
@@ -27,6 +29,8 @@ public class CartController {
     @Autowired
     private CartUtil cartUtil;
 
+    private Logger logger = LoggerFactory.getLogger(CartController.class);
+
 
     /**
      * 根据商品的id查询商品
@@ -36,7 +40,7 @@ public class CartController {
         Goods good = new Goods();
         Map<String, Object> map = new HashMap<>();
         good = cartOperation.selectGoodById(goodId);
-        System.out.println(goodId);
+        logger.info(" goodId:"+goodId);
         map.put("good",good);
         return cartUtil.getJsonString(0, "查询单个商品成功", map);
     }
