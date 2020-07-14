@@ -10,7 +10,9 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Controller
 @ResponseBody
@@ -48,5 +50,15 @@ public class ScartController {
             msg = "移除成功";
         }
         return cartUtil.getJsonString(7, msg);
+    }
+
+    @RequestMapping(value = "/getScart", method = RequestMethod.GET)
+    public String getScartById(){
+        List<Scart> scartList = scartService.getScartByUid(1);
+        Map<String, Object> scartMap = new HashMap<>();
+        for(Scart scart : scartList){
+            scartMap.put("商品:" + scart.getGoodId(), scart);
+        }
+        return cartUtil.getJsonString(8, "用户" + 1 + "的购物车", scartMap);
     }
 }

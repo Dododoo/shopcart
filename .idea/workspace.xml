@@ -2,16 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="5d4a8dc5-7d54-40a1-8cc7-68724addb554" name="Default Changelist" comment="项目搭建">
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/boss/train/shopcart/config/RedisConfig.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/boss/train/shopcart/util/RedisUtil.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/logback-spring.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/boss/train/shopcart/controller/CartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boss/train/shopcart/controller/CartController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/shopcart.iml" beforeDir="false" afterPath="$PROJECT_DIR$/shopcart.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/boss/train/shopcart/config/RedisConfig.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boss/train/shopcart/config/RedisConfig.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/boss/train/shopcart/controller/ScartController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boss/train/shopcart/controller/ScartController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/boss/train/shopcart/service/Impl/ScartServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boss/train/shopcart/service/Impl/ScartServiceImpl.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/application.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/target/classes/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/target/classes/application.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/boss/train/shopcart/util/RedisUtil.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/boss/train/shopcart/util/RedisUtil.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,6 +35,7 @@
     <option name="importingSettings">
       <MavenImportingSettings>
         <option name="importAutomatically" value="true" />
+        <option name="vmOptionsForImporter" value="-Xmx768m" />
       </MavenImportingSettings>
     </option>
   </component>
@@ -60,7 +58,7 @@
     <property name="project.structure.last.edited" value="Modules" />
     <property name="project.structure.proportion" value="0.15" />
     <property name="project.structure.side.proportion" value="0.2" />
-    <property name="settings.editor.selected.configurable" value="MavenSettings" />
+    <property name="settings.editor.selected.configurable" value="reference.settings.project.maven.repository.indices" />
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
@@ -149,7 +147,17 @@
       <workItem from="1594688964070" duration="173000" />
       <workItem from="1594689177627" duration="32000" />
       <workItem from="1594689220220" duration="36000" />
-      <workItem from="1594689315252" duration="826000" />
+      <workItem from="1594689315252" duration="1876000" />
+      <workItem from="1594691220376" duration="462000" />
+      <workItem from="1594691724298" duration="765000" />
+      <workItem from="1594692646950" duration="1170000" />
+      <workItem from="1594693953161" duration="23000" />
+      <workItem from="1594694001910" duration="166000" />
+      <workItem from="1594694183446" duration="4720000" />
+      <workItem from="1594700683608" duration="2698000" />
+      <workItem from="1594704379167" duration="1093000" />
+      <workItem from="1594705515959" duration="3402000" />
+      <workItem from="1594709034799" duration="167000" />
     </task>
     <task id="LOCAL-00001" summary="项目搭建">
       <created>1594278984636</created>
@@ -189,38 +197,54 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="584" y="168" key="FileChooserDialogImpl/0.0.1536.824@0.0.1536.824" timestamp="1594266227806" />
-    <state width="1493" height="215" key="GridCell.Tab.0.bottom" timestamp="1594690150132">
+    <state width="1493" height="37" key="GridCell.Tab.0.bottom" timestamp="1594708921036">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594690150132" />
-    <state width="1493" height="215" key="GridCell.Tab.0.center" timestamp="1594690150132">
+    <state width="1493" height="37" key="GridCell.Tab.0.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594708921036" />
+    <state width="1493" height="37" key="GridCell.Tab.0.center" timestamp="1594708921036">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594690150132" />
-    <state width="1493" height="215" key="GridCell.Tab.0.left" timestamp="1594690150131">
+    <state width="1493" height="37" key="GridCell.Tab.0.center/0.0.1536.824@0.0.1536.824" timestamp="1594708921036" />
+    <state width="1493" height="37" key="GridCell.Tab.0.left" timestamp="1594708921036">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594690150131" />
-    <state width="1493" height="215" key="GridCell.Tab.0.right" timestamp="1594690150132">
+    <state width="1493" height="37" key="GridCell.Tab.0.left/0.0.1536.824@0.0.1536.824" timestamp="1594708921036" />
+    <state width="1493" height="37" key="GridCell.Tab.0.right" timestamp="1594708921036">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594690150132" />
-    <state width="1493" height="215" key="GridCell.Tab.1.bottom" timestamp="1594690150133">
+    <state width="1493" height="37" key="GridCell.Tab.0.right/0.0.1536.824@0.0.1536.824" timestamp="1594708921036" />
+    <state width="1493" height="37" key="GridCell.Tab.1.bottom" timestamp="1594708921036">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594690150133" />
-    <state width="1493" height="215" key="GridCell.Tab.1.center" timestamp="1594690150132">
+    <state width="1493" height="37" key="GridCell.Tab.1.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594708921036" />
+    <state width="1493" height="37" key="GridCell.Tab.1.center" timestamp="1594708921036">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1594690150132" />
-    <state width="1493" height="215" key="GridCell.Tab.1.left" timestamp="1594690150132">
+    <state width="1493" height="37" key="GridCell.Tab.1.center/0.0.1536.824@0.0.1536.824" timestamp="1594708921036" />
+    <state width="1493" height="37" key="GridCell.Tab.1.left" timestamp="1594708921036">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1594690150132" />
-    <state width="1493" height="215" key="GridCell.Tab.1.right" timestamp="1594690150132">
+    <state width="1493" height="37" key="GridCell.Tab.1.left/0.0.1536.824@0.0.1536.824" timestamp="1594708921036" />
+    <state width="1493" height="37" key="GridCell.Tab.1.right" timestamp="1594708921036">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state width="1493" height="215" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1594690150132" />
+    <state width="1493" height="37" key="GridCell.Tab.1.right/0.0.1536.824@0.0.1536.824" timestamp="1594708921036" />
+    <state width="1493" height="143" key="GridCell.Tab.2.bottom" timestamp="1594705465510">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="143" key="GridCell.Tab.2.bottom/0.0.1536.824@0.0.1536.824" timestamp="1594705465510" />
+    <state width="1493" height="143" key="GridCell.Tab.2.center" timestamp="1594705465510">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="143" key="GridCell.Tab.2.center/0.0.1536.824@0.0.1536.824" timestamp="1594705465510" />
+    <state width="1493" height="143" key="GridCell.Tab.2.left" timestamp="1594705465510">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="143" key="GridCell.Tab.2.left/0.0.1536.824@0.0.1536.824" timestamp="1594705465510" />
+    <state width="1493" height="143" key="GridCell.Tab.2.right" timestamp="1594705465510">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state width="1493" height="143" key="GridCell.Tab.2.right/0.0.1536.824@0.0.1536.824" timestamp="1594705465510" />
     <state x="299" y="68" key="Maven.ArtifactSearchDialog" timestamp="1594266354815">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -233,10 +257,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="477" y="128" key="MultipleFileMergeDialog/0.0.1536.824@0.0.1536.824" timestamp="1594469146798" />
-    <state x="284" y="0" key="SettingsEditor" timestamp="1594610736279">
+    <state x="255" y="59" key="SettingsEditor" timestamp="1594708575430">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="284" y="0" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1594610736279" />
+    <state x="255" y="59" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1594708575430" />
     <state x="361" y="146" key="Vcs.Push.Dialog.v2" timestamp="1594279141429">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -245,10 +269,10 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="565" y="190" key="chooseDestDirectoryDialog/0.0.1536.824@0.0.1536.824" timestamp="1594274158753" />
-    <state x="449" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1594686931108">
+    <state x="449" y="237" key="com.intellij.ide.util.TipDialog" timestamp="1594691220254">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="449" y="237" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1594686931108" />
+    <state x="449" y="237" key="com.intellij.ide.util.TipDialog/0.0.1536.824@0.0.1536.824" timestamp="1594691220254" />
     <state x="178" y="45" key="new project wizard" timestamp="1594264867816">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
@@ -261,5 +285,14 @@
       <screen x="0" y="0" width="1536" height="824" />
     </state>
     <state x="431" y="145" width="672" height="678" key="search.everywhere.popup/0.0.1536.824@0.0.1536.824" timestamp="1594689091461" />
+  </component>
+  <component name="XDebuggerManager">
+    <watches-manager>
+      <configuration name="SpringBootApplicationConfigurationType">
+        <watch expression="((ScartServiceImpl)param_2).session" language="JAVA" custom="com.boss.train.shopcart.service.Impl.ScartServiceImpl" />
+        <watch expression="list" />
+        <watch expression="list" language="JAVA" />
+      </configuration>
+    </watches-manager>
   </component>
 </project>
